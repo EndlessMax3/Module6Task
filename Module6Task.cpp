@@ -103,8 +103,9 @@ int main()
 
     //Module6 File I/O Streams
     ofstream w(fname, ios::app); //поток записи в файл
+    w.seekp(0, ios::end);
     w << t5 << setw(30) << d5 << endl;
-    w << t6 << setw(30) << d6;
+    w << t6 << setw(30) << d6 << endl;
     w.close();
 
     ifstream r(fname, ios::in); //поток чтения из файла
@@ -113,7 +114,8 @@ int main()
     while (!r.eof())
     {
         r >> time >> date;
-        cout << "Date: " << setw(30) << left << date << "Time: " << time << endl;
+        if(time[0] != NULL)
+            cout << "Date: " << setw(30) << left << date << "Time: " << time << endl;
     }
     r.close();
 
